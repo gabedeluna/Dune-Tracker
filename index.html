@@ -14,6 +14,7 @@
             background: linear-gradient(135deg, #8B4513 0%, #6A0DAD 25%, #8A2BE2 50%, #D2691E 75%, #F4A460 100%);
             color: #2C1810;
             line-height: 1.6;
+            min-height: 100vh;
         }
 
 ```
@@ -180,85 +181,18 @@
         
         .container {
             padding: 20px;
-            margin: 5px;
         }
         
         h1 {
             font-size: 1.8em;
-            line-height: 1.1;
-            margin-bottom: 10px;
-        }
-        
-        h2 {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-        
-        .header-info {
-            padding: 15px;
-            font-size: 0.95em;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-        
-        .resource-section {
-            margin: 20px 0;
-            padding: 18px;
-        }
-        
-        .resource-item {
-            padding: 15px;
-            margin: 10px 0;
-        }
-        
-        .resource-title {
-            font-size: 1.05em;
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
-        
-        .requirements {
-            font-size: 0.95em;
-            padding-left: 20px;
-            margin: 10px 0;
         }
         
         .checkbox-group {
-            flex-direction: row;
-            flex-wrap: wrap;
             gap: 15px;
-            margin: 12px 0;
         }
         
         input[type="text"] {
             max-width: 100%;
-            font-size: 16px;
-            padding: 10px 12px;
-            margin: 8px 0;
-        }
-        
-        .summary-table {
-            font-size: 0.9em;
-            overflow-x: auto;
-            display: block;
-            white-space: nowrap;
-        }
-        
-        .summary-table th,
-        .summary-table td {
-            padding: 10px 8px;
-            min-width: 120px;
-        }
-        
-        .footer {
-            padding: 18px;
-            font-size: 0.95em;
-            margin-top: 25px;
-        }
-        
-        .quote {
-            font-size: 1.05em;
-            margin-top: 12px;
         }
     }
 </style>
@@ -291,7 +225,7 @@
                 <li>322 Salvaged Metal</li>
             </ul>
             <label><strong>Assigned to:</strong></label><br>
-            <input type="text" placeholder="Enter guild member name">
+            <input type="text" id="gen_assignee" placeholder="Enter guild member name">
             
             <div class="checkbox-group">
                 <div class="checkbox-item">
@@ -319,7 +253,7 @@
                 <li>6 Spice Melange</li>
             </ul>
             <label><strong>Assigned to:</strong></label><br>
-            <input type="text" placeholder="Enter guild member name">
+            <input type="text" id="wt_assignee" placeholder="Enter guild member name">
             
             <div class="checkbox-group">
                 <div class="checkbox-item">
@@ -342,7 +276,7 @@
                 <li>39 Industrial Pumps</li>
             </ul>
             <label><strong>Assigned to:</strong></label><br>
-            <input type="text" placeholder="Enter guild member name">
+            <input type="text" id="wc_assignee" placeholder="Enter guild member name">
             
             <div class="checkbox-group">
                 <div class="checkbox-item">
@@ -368,7 +302,7 @@
                 <li>12 Silicon Blocks</li>
             </ul>
             <label><strong>Assigned to:</strong></label><br>
-            <input type="text" placeholder="Enter guild member name">
+            <input type="text" id="sc_assignee" placeholder="Enter guild member name">
             
             <div class="checkbox-group">
                 <div class="checkbox-item">
@@ -395,7 +329,7 @@
                 <li>18 Spice Melange</li>
             </ul>
             <label><strong>Assigned to:</strong></label><br>
-            <input type="text" placeholder="Enter guild member name">
+            <input type="text" id="mcr_assignee" placeholder="Enter guild member name">
             
             <div class="checkbox-group">
                 <div class="checkbox-item">
@@ -418,7 +352,7 @@
                 <li>25 Complex Machinery</li>
             </ul>
             <label><strong>Assigned to:</strong></label><br>
-            <input type="text" placeholder="Enter guild member name">
+            <input type="text" id="mor_assignee" placeholder="Enter guild member name">
             
             <div class="checkbox-group">
                 <div class="checkbox-item">
@@ -442,7 +376,7 @@
                 <li>35 Complex Machinery</li>
             </ul>
             <label><strong>Assigned to:</strong></label><br>
-            <input type="text" placeholder="Enter guild member name">
+            <input type="text" id="sr_assignee" placeholder="Enter guild member name">
             
             <div class="checkbox-group">
                 <div class="checkbox-item">
@@ -467,7 +401,7 @@
                 <li>Granite Stone (CHOAM) OR Plastone (Faction Base Building Set)</li>
             </ul>
             <label><strong>Assigned to:</strong></label><br>
-            <input type="text" placeholder="Enter guild member name">
+            <input type="text" id="mbs_assignee" placeholder="Enter guild member name">
             
             <div class="checkbox-group">
                 <div class="checkbox-item">
@@ -493,7 +427,7 @@
                 <li>3 Calibrated Servoks</li>
             </ul>
             <label><strong>Assigned to:</strong></label><br>
-            <input type="text" placeholder="Enter guild member name">
+            <input type="text" id="ps_assignee" placeholder="Enter guild member name">
             
             <div class="checkbox-group">
                 <div class="checkbox-item">
@@ -582,68 +516,42 @@
 </div>
 
 <script>
-    // Simple form submission to Google Sheets
+    // Simpler Google Sheets connection
     const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwLadlH5KMOzsJ1J_an9YyLDmdIR4rFtKcyaXCmHijb_gcEC5MYRDTROxgdLQgD7Lce/exec';
     
     // Function to collect all form data
     function collectFormData() {
-        const data = {};
-        
-        // Collect all text inputs
-        const textInputs = document.querySelectorAll('input[type="text"]');
-        textInputs.forEach((input, index) => {
-            const section = input.closest('.resource-item').querySelector('.resource-title').textContent;
-            data[`${section}_assignee`] = input.value;
-        });
-        
-        // Collect all checkboxes
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach(checkbox => {
-            data[checkbox.id] = checkbox.checked;
-        });
-        
-        data.timestamp = new Date().toISOString();
+        const data = {
+            timestamp: new Date().toISOString(),
+            gen_assignee: document.getElementById('gen_assignee').value,
+            gen_progress: document.getElementById('gen_progress').checked,
+            gen_complete: document.getElementById('gen_complete').checked,
+            wt_assignee: document.getElementById('wt_assignee').value,
+            wt_progress: document.getElementById('wt_progress').checked,
+            wt_complete: document.getElementById('wt_complete').checked,
+            wc_assignee: document.getElementById('wc_assignee').value,
+            wc_progress: document.getElementById('wc_progress').checked,
+            wc_complete: document.getElementById('wc_complete').checked,
+            sc_assignee: document.getElementById('sc_assignee').value,
+            sc_progress: document.getElementById('sc_progress').checked,
+            sc_complete: document.getElementById('sc_complete').checked,
+            mcr_assignee: document.getElementById('mcr_assignee').value,
+            mcr_progress: document.getElementById('mcr_progress').checked,
+            mcr_complete: document.getElementById('mcr_complete').checked,
+            mor_assignee: document.getElementById('mor_assignee').value,
+            mor_progress: document.getElementById('mor_progress').checked,
+            mor_complete: document.getElementById('mor_complete').checked,
+            sr_assignee: document.getElementById('sr_assignee').value,
+            sr_progress: document.getElementById('sr_progress').checked,
+            sr_complete: document.getElementById('sr_complete').checked,
+            mbs_assignee: document.getElementById('mbs_assignee').value,
+            mbs_progress: document.getElementById('mbs_progress').checked,
+            mbs_complete: document.getElementById('mbs_complete').checked,
+            ps_assignee: document.getElementById('ps_assignee').value,
+            ps_progress: document.getElementById('ps_progress').checked,
+            ps_complete: document.getElementById('ps_complete').checked
+        };
         return data;
-    }
-    
-    // Load shared data from Google Sheets
-    async function loadSharedData() {
-        if (!GOOGLE_SHEETS_URL || GOOGLE_SHEETS_URL.includes('YOUR_GOOGLE')) {
-            console.log('Google Sheets not configured yet - using local storage');
-            loadSavedData();
-            return;
-        }
-        
-        try {
-            const response = await fetch(GOOGLE_SHEETS_URL);
-            const result = await response.json();
-            
-            if (result.success && result.data) {
-                const data = result.data;
-                
-                // Restore text inputs
-                const textInputs = document.querySelectorAll('input[type="text"]');
-                textInputs.forEach((input, index) => {
-                    const section = input.closest('.resource-item').querySelector('.resource-title').textContent;
-                    const savedValue = data[`${section}_assignee`];
-                    if (savedValue) input.value = savedValue;
-                });
-                
-                // Restore checkboxes
-                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                checkboxes.forEach(checkbox => {
-                    if (data[checkbox.id] !== undefined) {
-                        checkbox.checked = data[checkbox.id];
-                    }
-                });
-                
-                showSaveStatus('📡 Loaded shared data');
-            }
-        } catch (error) {
-            console.error('Error loading shared data:', error);
-            showSaveStatus('❌ Load failed - using local data');
-            loadSavedData();
-        }
     }
     
     // Auto-save function
@@ -654,50 +562,38 @@
         localStorage.setItem('duneFormData', JSON.stringify(data));
         
         // Send to Google Sheets
-        if (GOOGLE_SHEETS_URL && !GOOGLE_SHEETS_URL.includes('YOUR_GOOGLE')) {
-            try {
-                const response = await fetch(GOOGLE_SHEETS_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-                
-                const result = await response.json();
-                if (result.success) {
-                    showSaveStatus('✅ Saved to cloud!');
-                } else {
-                    showSaveStatus('❌ Save failed');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                showSaveStatus('❌ Save failed');
-            }
-        } else {
+        try {
+            const response = await fetch(GOOGLE_SHEETS_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+                body: JSON.stringify(data)
+            });
+            
+            showSaveStatus('✅ Saved to cloud!');
+        } catch (error) {
+            console.error('Error:', error);
             showSaveStatus('💾 Saved locally');
         }
     }
     
-    // Load saved data on page load
+    // Load saved data
     function loadSavedData() {
         const savedData = localStorage.getItem('duneFormData');
         if (savedData) {
             const data = JSON.parse(savedData);
             
-            // Restore text inputs
-            const textInputs = document.querySelectorAll('input[type="text"]');
-            textInputs.forEach((input, index) => {
-                const section = input.closest('.resource-item').querySelector('.resource-title').textContent;
-                const savedValue = data[`${section}_assignee`];
-                if (savedValue) input.value = savedValue;
-            });
-            
-            // Restore checkboxes
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(checkbox => {
-                if (data[checkbox.id] !== undefined) {
-                    checkbox.checked = data[checkbox.id];
+            // Restore all fields
+            Object.keys(data).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    if (element.type === 'checkbox') {
+                        element.checked = data[key];
+                    } else {
+                        element.value = data[key];
+                    }
                 }
             });
         }
@@ -716,16 +612,16 @@
         setTimeout(() => statusDiv.textContent = '', 3000);
     }
     
-    // Add event listeners for auto-save
+    // Add event listeners
     document.addEventListener('DOMContentLoaded', function() {
-        loadSharedData(); // Load from Google Sheets instead of local
+        loadSavedData();
         
         // Auto-save on input changes
         document.addEventListener('input', debounce(autoSave, 2000));
         document.addEventListener('change', autoSave);
     });
     
-    // Debounce function to limit auto-save frequency
+    // Debounce function
     function debounce(func, wait) {
         let timeout;
         return function executedFunction(...args) {
@@ -738,10 +634,10 @@
         };
     }
     
-    // Manual save button function
+    // Manual save function
     function saveToCloud() {
         autoSave();
-        showSaveStatus('💾 Saving to cloud...');
+        showSaveStatus('💾 Saving...');
     }
     
     // Export data function
