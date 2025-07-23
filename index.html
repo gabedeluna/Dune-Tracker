@@ -12,6 +12,7 @@
             margin: 0 auto;
             padding: 20px;
             background: linear-gradient(135deg, #8B4513 0%, #6A0DAD 25%, #8A2BE2 50%, #D2691E 75%, #F4A460 100%);
+            background-attachment: fixed;
             color: #2C1810;
             line-height: 1.6;
             min-height: 100vh;
@@ -19,11 +20,14 @@
 
 ```
     .container {
-        background: rgba(255, 248, 220, 0.95);
+        background: rgba(255, 248, 220, 1);
         padding: 30px;
         border-radius: 15px;
         box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         border: 3px solid #6A0DAD;
+        margin: 20px auto;
+        position: relative;
+        z-index: 1;
     }
     
     h1 {
