@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dune Awakening - Deep Desert Base Resource Assignment</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #8B4513 0%, #6A0DAD 25%, #8A2BE2 50%, #D2691E 75%, #F4A460 100%);
+            color: #2C1810;
+            line-height: 1.6;
+        }
+
+```
+    .container {
+        background: rgba(255, 248, 220, 0.95);
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        border: 3px solid #6A0DAD;
+    }
+    
+    h1 {
+        text-align: center;
+        color: #8B4513;
+        font-size: 2.2em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    h2 {
+        text-align: center;
+        color: #8A2BE2;
+        font-size: 1.3em;
+        margin-bottom: 25px;
+    }
+    
+    .header-info {
+        background: rgba(106, 13, 173, 0.1);
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 25px;
+        border-left: 5px solid #6A0DAD;
+    }
+    
+    .resource-section {
+        background: white;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid #8A2BE2;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .resource-section h3 {
+        color: #8B4513;
+        border-bottom: 2px solid #8A2BE2;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+    }
+    
+    .resource-item {
+        background: #FFF8DC;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 8px;
+        border: 1px solid #DDD;
+    }
+    
+    .resource-title {
+        font-weight: bold;
+        color: #8B4513;
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+    
+    .requirements {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+    
+    .requirements li {
+        margin: 5px 0;
+    }
+    
+    input[type="text"] {
+        width: 100%;
+        max-width: 300px;
+        padding: 8px 12px;
+        border: 2px solid #8A2BE2;
+        border-radius: 5px;
+        font-size: 16px;
+        background: white;
+    }
+    
+    input[type="text"]:focus {
+        outline: none;
+        border-color: #6A0DAD;
+        box-shadow: 0 0 5px rgba(106, 13, 173, 0.3);
+    }
+    
+    .checkbox-group {
+        margin: 10px 0;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .checkbox-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: #6A0DAD;
+    }
+    
+    .notes {
+        font-style: italic;
+        color: #666;
+        margin-top: 8px;
+        font-size: 0.9em;
+    }
+    
+    .summary-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .summary-table th,
+    .summary-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #DDD;
+    }
+    
+    .summary-table th {
+        background: #6A0DAD;
+        color: white;
+        font-weight: bold;
+    }
+    
+    .summary-table tr:hover {
+        background: #FFF8DC;
+    }
+    
+    .footer {
+        text-align: center;
+        margin-top: 30px;
+        padding: 20px;
+        background: rgba(106, 13, 173, 0.1);
+        border-radius: 8px;
+        border: 2px solid #8A2BE2;
+    }
+    
+    .quote {
+        font-style: italic;
+        color: #6A0DAD;
+        font-size: 1.1em;
+        margin-top: 15px;
+    }
+    
+    @media (max-width: 600px) {
+        body {
+            padding: 10px;
+        }
+        
+        .container {
+            padding: 15px;
+        }
+        
+        h1 {
+            font-size: 1.8em;
+        }
+        
+        .checkbox-group {
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        input[type="text"] {
+            max-width: 100%;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="container">
+        <h1>DUNE AWAKENING GUILD RESOURCE ASSIGNMENT</h1>
+        <h2>Deep Desert Base Construction Project</h2>
+
+```
+    <div class="header-info">
+        <strong>Project Leader:</strong> Captain Jizz and Jofan Eagle of the Desert<br>
+        <strong>Date:</strong> July 23, 2025<br>
+        <strong>Guild:</strong> The Third Turd Reich<br><br>
+        <strong>📦 LOGISTICS PLAN:</strong><br>
+        • Large storage container will be built at Jofan's base to collect all supplies<br>
+        • Jofan's Assault Ornithopter will transport materials to deep desert build site<br>
+        • Assault Ornithopter Storage Mk5: <strong>1,000 volume capacity</strong><br>
+        • <strong>Multiple transport runs required</strong> - estimated total volume needed exceeds single-trip capacity
+    </div>
+
+    <div class="resource-section">
+        <h3>POWER INFRASTRUCTURE</h3>
+        
+        <div class="resource-item">
+            <div class="resource-title">14 Generators (Half Cost)</div>
+            <ul class="requirements">
+                <li>322 Salvaged Metal</li>
+            </ul>
+            <label><strong>Assigned to:</strong></label><br>
+            <input type="text" placeholder="Enter guild member name">
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="gen_progress">
+                    <label for="gen_progress">In Progress</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="gen_complete">
+                    <label for="gen_complete">Completed</label>
+                </div>
+            </div>
+            <div class="notes">Target 1000 power output. Generators preferred over wind turbines.</div>
+        </div>
+    </div>
+
+    <div class="resource-section">
+        <h3>WATER SYSTEMS</h3>
+        
+        <div class="resource-item">
+            <div class="resource-title">2 Large Windtraps (Half Cost)</div>
+            <ul class="requirements">
+                <li>240 Duraluminum Ingots</li>
+                <li>250 Silicon Blocks</li>
+                <li>70 Calibrated Servoks</li>
+                <li>6 Spice Melange</li>
+            </ul>
+            <label><strong>Assigned to:</strong></label><br>
+            <input type="text" placeholder="Enter guild member name">
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="wt_progress">
+                    <label for="wt_progress">In Progress</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="wt_complete">
+                    <label for="wt_complete">Completed</label>
+                </div>
+            </div>
+            <div class="notes">Primary water source for deep desert operations.</div>
+        </div>
+
+        <div class="resource-item">
+            <div class="resource-title">3 Large Water Cisterns (Half Cost)</div>
+            <ul class="requirements">
+                <li>222 Duraluminum Ingots</li>
+                <li>240 Silicon Blocks</li>
+                <li>39 Industrial Pumps</li>
+            </ul>
+            <label><strong>Assigned to:</strong></label><br>
+            <input type="text" placeholder="Enter guild member name">
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="wc_progress">
+                    <label for="wc_progress">In Progress</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="wc_complete">
+                    <label for="wc_complete">Completed</label>
+                </div>
+            </div>
+            <div class="notes">300,000L storage capacity for refining operations.</div>
+        </div>
+    </div>
+
+    <div class="resource-section">
+        <h3>STORAGE & ORGANIZATION</h3>
+        
+        <div class="resource-item">
+            <div class="resource-title">3 Storage Containers (Half Cost)</div>
+            <ul class="requirements">
+                <li>69 Aluminum Ingots</li>
+                <li>12 Silicon Blocks</li>
+            </ul>
+            <label><strong>Assigned to:</strong></label><br>
+            <input type="text" placeholder="Enter guild member name">
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="sc_progress">
+                    <label for="sc_progress">In Progress</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="sc_complete">
+                    <label for="sc_complete">Completed</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="resource-section">
+        <h3>REFINING FACILITIES</h3>
+        
+        <div class="resource-item">
+            <div class="resource-title">Medium Chemical Refinery (Half Cost)</div>
+            <ul class="requirements">
+                <li>75 Duraluminum Ingots</li>
+                <li>45 Silicon Blocks</li>
+                <li>25 Complex Machinery</li>
+                <li>18 Spice Melange</li>
+            </ul>
+            <label><strong>Assigned to:</strong></label><br>
+            <input type="text" placeholder="Enter guild member name">
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="mcr_progress">
+                    <label for="mcr_progress">In Progress</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="mcr_complete">
+                    <label for="mcr_complete">Completed</label>
+                </div>
+            </div>
+            <div class="notes">For Stravidium Mass → Fiber conversion.</div>
+        </div>
+
+        <div class="resource-item">
+            <div class="resource-title">Medium Ore Refinery (Half Cost)</div>
+            <ul class="requirements">
+                <li>63 Steel Ingots</li>
+                <li>30 Cobalt Paste</li>
+                <li>25 Complex Machinery</li>
+            </ul>
+            <label><strong>Assigned to:</strong></label><br>
+            <input type="text" placeholder="Enter guild member name">
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="mor_progress">
+                    <label for="mor_progress">In Progress</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="mor_complete">
+                    <label for="mor_complete">Completed</label>
+                </div>
+            </div>
+            <div class="notes">Plastanium production from Stravidium Fiber + Titanium.</div>
+        </div>
+
+        <div class="resource-item">
+            <div class="resource-title">Spice Refinery (Half Cost)</div>
+            <ul class="requirements">
+                <li>80 Duraluminum Ingots</li>
+                <li>65 Silicon Blocks</li>
+                <li>40 Cobalt Paste</li>
+                <li>35 Complex Machinery</li>
+            </ul>
+            <label><strong>Assigned to:</strong></label><br>
+            <input type="text" placeholder="Enter guild member name">
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="sr_progress">
+                    <label for="sr_progress">In Progress</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="sr_complete">
+                    <label for="sr_complete">Completed</label>
+                </div>
+            </div>
+            <div class="notes">Start small, upgrade to medium at 68 Spice Melange (33% efficiency boost).</div>
+        </div>
+    </div>
+
+    <div class="resource-section">
+        <h3>BASE FOUNDATION</h3>
+        
+        <div class="resource-item">
+            <div class="resource-title">Main Base Structure (Half Cost)</div>
+            <ul class="requirements">
+                <li>Granite Stone (CHOAM) OR Plastone (Faction Base Building Set)</li>
+            </ul>
+            <label><strong>Assigned to:</strong></label><br>
+            <input type="text" placeholder="Enter guild member name">
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="mbs_progress">
+                    <label for="mbs_progress">In Progress</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="mbs_complete">
+                    <label for="mbs_complete">Completed</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="resource-section">
+        <h3>PROTECTION SYSTEMS</h3>
+        
+        <div class="resource-item">
+            <div class="resource-title">Pentashield Surface (Half Cost)</div>
+            <ul class="requirements">
+                <li>1 Steel Ingot</li>
+                <li>10 Cobalt Paste</li>
+                <li>3 Calibrated Servoks</li>
+            </ul>
+            <label><strong>Assigned to:</strong></label><br>
+            <input type="text" placeholder="Enter guild member name">
+            
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <input type="checkbox" id="ps_progress">
+                    <label for="ps_progress">In Progress</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="ps_complete">
+                    <label for="ps_complete">Completed</label>
+                </div>
+            </div>
+            <div class="notes">Ornithopter protection from sandstorms.</div>
+        </div>
+    </div>
+
+    <div class="resource-section">
+        <h3>TOTAL RESOURCE SUMMARY</h3>
+        
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th>Material</th>
+                    <th>Total Needed</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Duraluminum Ingots</strong></td>
+                    <td>617</td>
+                    <td><input type="checkbox" id="di_complete"></td>
+                </tr>
+                <tr>
+                    <td><strong>Silicon Blocks</strong></td>
+                    <td>567</td>
+                    <td><input type="checkbox" id="sb_complete"></td>
+                </tr>
+                <tr>
+                    <td><strong>Salvaged Metal</strong></td>
+                    <td>322</td>
+                    <td><input type="checkbox" id="sm_complete"></td>
+                </tr>
+                <tr>
+                    <td><strong>Steel Ingots</strong></td>
+                    <td>64</td>
+                    <td><input type="checkbox" id="si_complete"></td>
+                </tr>
+                <tr>
+                    <td><strong>Aluminum Ingots</strong></td>
+                    <td>69</td>
+                    <td><input type="checkbox" id="ai_complete"></td>
+                </tr>
+                <tr>
+                    <td><strong>Complex Machinery</strong></td>
+                    <td>85</td>
+                    <td><input type="checkbox" id="cm_complete"></td>
+                </tr>
+                <tr>
+                    <td><strong>Cobalt Paste</strong></td>
+                    <td>80</td>
+                    <td><input type="checkbox" id="cp_complete"></td>
+                </tr>
+                <tr>
+                    <td><strong>Calibrated Servoks</strong></td>
+                    <td>73</td>
+                    <td><input type="checkbox" id="cs_complete"></td>
+                </tr>
+                <tr>
+                    <td><strong>Industrial Pumps</strong></td>
+                    <td>39</td>
+                    <td><input type="checkbox" id="ip_complete"></td>
+                </tr>
+                <tr>
+                    <td><strong>Spice Melange</strong></td>
+                    <td>24</td>
+                    <td><input type="checkbox" id="smel_complete"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        <strong>Project Completion Target:</strong> Before Next Coriolis Storm
+        <div class="quote">"The spice must flow... and so must our resources!"</div>
+    </div>
+</div>
+
+<script>
+    // Simple form submission to Google Sheets
+    const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwLadlH5KMOzsJ1J_an9YyLDmdIR4rFtKcyaXCmHijb_gcEC5MYRDTROxgdLQgD7Lce/exec';
+    
+    // Function to collect all form data
+    function collectFormData() {
+        const data = {};
+        
+        // Collect all text inputs
+        const textInputs = document.querySelectorAll('input[type="text"]');
+        textInputs.forEach((input, index) => {
+            const section = input.closest('.resource-item').querySelector('.resource-title').textContent;
+            data[`${section}_assignee`] = input.value;
+        });
+        
+        // Collect all checkboxes
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            data[checkbox.id] = checkbox.checked;
+        });
+        
+        data.timestamp = new Date().toISOString();
+        return data;
+    }
+    
+    // Load shared data from Google Sheets
+    async function loadSharedData() {
+        if (!GOOGLE_SHEETS_URL || GOOGLE_SHEETS_URL.includes('YOUR_GOOGLE')) {
+            console.log('Google Sheets not configured yet - using local storage');
+            loadSavedData();
+            return;
+        }
+        
+        try {
+            const response = await fetch(GOOGLE_SHEETS_URL);
+            const result = await response.json();
+            
+            if (result.success && result.data) {
+                const data = result.data;
+                
+                // Restore text inputs
+                const textInputs = document.querySelectorAll('input[type="text"]');
+                textInputs.forEach((input, index) => {
+                    const section = input.closest('.resource-item').querySelector('.resource-title').textContent;
+                    const savedValue = data[`${section}_assignee`];
+                    if (savedValue) input.value = savedValue;
+                });
+                
+                // Restore checkboxes
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(checkbox => {
+                    if (data[checkbox.id] !== undefined) {
+                        checkbox.checked = data[checkbox.id];
+                    }
+                });
+                
+                showSaveStatus('📡 Loaded shared data');
+            }
+        } catch (error) {
+            console.error('Error loading shared data:', error);
+            showSaveStatus('❌ Load failed - using local data');
+            loadSavedData();
+        }
+    }
+    
+    // Auto-save function
+    async function autoSave() {
+        const data = collectFormData();
+        
+        // Save to localStorage as backup
+        localStorage.setItem('duneFormData', JSON.stringify(data));
+        
+        // Send to Google Sheets
+        if (GOOGLE_SHEETS_URL && !GOOGLE_SHEETS_URL.includes('YOUR_GOOGLE')) {
+            try {
+                const response = await fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    showSaveStatus('✅ Saved to cloud!');
+                } else {
+                    showSaveStatus('❌ Save failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showSaveStatus('❌ Save failed');
+            }
+        } else {
+            showSaveStatus('💾 Saved locally');
+        }
+    }
+    
+    // Load saved data on page load
+    function loadSavedData() {
+        const savedData = localStorage.getItem('duneFormData');
+        if (savedData) {
+            const data = JSON.parse(savedData);
+            
+            // Restore text inputs
+            const textInputs = document.querySelectorAll('input[type="text"]');
+            textInputs.forEach((input, index) => {
+                const section = input.closest('.resource-item').querySelector('.resource-title').textContent;
+                const savedValue = data[`${section}_assignee`];
+                if (savedValue) input.value = savedValue;
+            });
+            
+            // Restore checkboxes
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                if (data[checkbox.id] !== undefined) {
+                    checkbox.checked = data[checkbox.id];
+                }
+            });
+        }
+    }
+    
+    // Show save status
+    function showSaveStatus(message) {
+        let statusDiv = document.getElementById('saveStatus');
+        if (!statusDiv) {
+            statusDiv = document.createElement('div');
+            statusDiv.id = 'saveStatus';
+            statusDiv.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #6A0DAD; color: white; padding: 10px 20px; border-radius: 5px; z-index: 1000; font-weight: bold;';
+            document.body.appendChild(statusDiv);
+        }
+        statusDiv.textContent = message;
+        setTimeout(() => statusDiv.textContent = '', 3000);
+    }
+    
+    // Add event listeners for auto-save
+    document.addEventListener('DOMContentLoaded', function() {
+        loadSharedData(); // Load from Google Sheets instead of local
+        
+        // Auto-save on input changes
+        document.addEventListener('input', debounce(autoSave, 2000));
+        document.addEventListener('change', autoSave);
+    });
+    
+    // Debounce function to limit auto-save frequency
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+    
+    // Manual save button function
+    function saveToCloud() {
+        autoSave();
+        showSaveStatus('💾 Saving to cloud...');
+    }
+    
+    // Export data function
+    function exportData() {
+        const data = collectFormData();
+        const dataStr = JSON.stringify(data, null, 2);
+        const dataBlob = new Blob([dataStr], {type: 'application/json'});
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'dune-base-resources.json';
+        link.click();
+        URL.revokeObjectURL(url);
+    }
+</script>
+
+<!-- Save Controls -->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+    <button onclick="saveToCloud()" style="background: #6A0DAD; color: white; border: none; padding: 10px 15px; border-radius: 5px; margin: 5px; cursor: pointer; font-weight: bold;">💾 Save</button>
+    <button onclick="exportData()" style="background: #8A2BE2; color: white; border: none; padding: 10px 15px; border-radius: 5px; margin: 5px; cursor: pointer; font-weight: bold;">📤 Export</button>
+</div>
+```
+
+</body>
+</html>
