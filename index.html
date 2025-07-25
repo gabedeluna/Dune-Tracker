@@ -11,13 +11,24 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background: url('dune-awakening-sandworm-phone-wallpaper-4k-uhdpaper.com-25@5@d.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             color: #e8d5b7;
             line-height: 1.6;
             min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('dune-awakening-sandworm-phone-wallpaper-4k-uhdpaper.com-25@5@d.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
         }
 
         .container {
@@ -229,11 +240,6 @@
         @media (max-width: 600px) {
             body {
                 padding: 10px;
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center center;
-                background-attachment: scroll;
-                min-height: 100vh;
             }
             
             .container {
